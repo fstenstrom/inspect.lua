@@ -1,4 +1,4 @@
--- Patched for WoW by fstenstorm. Adds the following utility:
+-- Patched for WoW by fstenstrom. Adds the following utility:
 --
 -- 1. Global function "Inspect" that works exactly as function "inspect" in Core
 -- inspect.lua.
