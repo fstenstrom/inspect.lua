@@ -1,0 +1,7 @@
+## Interface: 90005
+## Title: + Inspect
+## Notes: Tool for inspecting/dumping tables. Intended to be be called from inside Addons when /tinspect is hard to use.
+## Author: Core: kikito (github). WoW interface: fstenstorm (github).
+## Version: dev
+
+inspect.lua

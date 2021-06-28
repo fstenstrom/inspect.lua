@@ -1,3 +1,14 @@
+-- Patched for WoW by fstenstorm. Adds the following utility:
+--
+-- 1. Global function "Inspect" that works exactly as function "inspect" in Core
+-- inspect.lua.
+--
+-- 2. Global function "dump" for easier debugging in WoW client. See the
+-- function's documentation for more info.
+--
+-- TODO: Make this a lib to avoid issues with dependency on that this addon is
+-- already loaded.
+
 local inspect ={
   _VERSION = 'inspect.lua 3.1.0',
   _URL     = 'http://github.com/kikito/inspect.lua',
@@ -27,6 +38,28 @@ local inspect ={
     SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
   ]]
 }
+
+-- Make accessible in global WoW namespace.
+Inspect = inspect;
+
+-- Util function for dumping to WoW console.
+--
+-- Avoids issue where the basic chat frame does not allow scrolling a message
+-- that is a too long one-liner.
+--
+-- Also avoids issue with long messages being truncated.
+--
+-- Appears to give stack overflow on "large" tables though.
+--
+-- TODO: Add some default filtering to avoid printing metatables and db
+-- references.
+function dump(var)
+    local tbl = { strsplit('\n', inspect(var)) };
+    for _, v in pairs(tbl) do
+        print(v);
+    end
+end
+
 
 local tostring = tostring
 
